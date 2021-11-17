@@ -52,7 +52,7 @@ namespace CsharpCalculator.ViewModels
 
                     switch (operationTypes[i]) {
                         case "+":
-                            if (Regex.IsMatch(calculationMembers[i + 1], @"\." ))
+                            if (Regex.IsMatch(calculationMembers[i + 1], @"\," ))
                             {
                                 result += float.Parse(calculationMembers[i + 1]);
                             } else {
@@ -61,7 +61,7 @@ namespace CsharpCalculator.ViewModels
                         break;
 
                         case "-":
-                        if (Regex.IsMatch(calculationMembers[i + 1], @"\." ))
+                        if (Regex.IsMatch(calculationMembers[i + 1], @"\," ))
                             {
                                 result -= float.Parse(calculationMembers[i + 1]);
                             } else {
@@ -70,7 +70,7 @@ namespace CsharpCalculator.ViewModels
                         break;
 
                         case "*":
-                            if (Regex.IsMatch(calculationMembers[i + 1], @"\." ))
+                            if (Regex.IsMatch(calculationMembers[i + 1], @"\," ))
                             {
                                 result *= float.Parse(calculationMembers[i + 1]);
                             } else {
@@ -79,7 +79,7 @@ namespace CsharpCalculator.ViewModels
                         break;
 
                         case "/":
-                            if (Regex.IsMatch(calculationMembers[i + 1], @"\." ))
+                            if (Regex.IsMatch(calculationMembers[i + 1], @"\," ))
                             {
                                 result /= float.Parse(calculationMembers[i + 1]);
                             } else {
