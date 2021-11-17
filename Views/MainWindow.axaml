@@ -7,8 +7,8 @@
         x:Class="CsharpCalculator.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="CsharpCalculator"
-        Width="300"
-        Height="300"
+        MaxWidth="300"
+        MaxHeight="300"
         CanResize="false"
         >
 

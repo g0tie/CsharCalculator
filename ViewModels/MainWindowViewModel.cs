@@ -79,5 +79,10 @@ namespace CsharpCalculator.ViewModels
         {
             CurrentInput = "0";
         }
+
+        public void GoBack()
+        {
+            CurrentInput = CurrentInput.Remove(CurrentInput.Length - 1);
+        }
     }
 }
