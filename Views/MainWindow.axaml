@@ -51,7 +51,7 @@
 
             <Button 
                 Grid.Row="0" Grid.Column="3" 
-                Command="{Binding Clear}"
+                Command="{Binding ResetCalculation}"
             >C</Button>
 
         </Grid>
