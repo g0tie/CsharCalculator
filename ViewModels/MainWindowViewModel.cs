@@ -44,7 +44,7 @@ namespace CsharpCalculator.ViewModels
             MatchCollection operationsMatches = Regex.Matches(CurrentInput, @"[-+*\/()]");
             var operationTypes = operationsMatches.Cast<Match>().Select(match => match.Value).ToList();
 
-            float result = float.Parse(calculationMembers[0]);
+            double result = double.Parse(calculationMembers[0]);
 
             for (int i = 0; i < calculationMembers.Length; i++) {
 
@@ -54,7 +54,7 @@ namespace CsharpCalculator.ViewModels
                         case "+":
                             if (Regex.IsMatch(calculationMembers[i + 1], @"\," ))
                             {
-                                result += float.Parse(calculationMembers[i + 1]);
+                                result += double.Parse(calculationMembers[i + 1]);
                             } else {
                                 result += int.Parse(calculationMembers[i + 1]);
                             }
@@ -63,7 +63,7 @@ namespace CsharpCalculator.ViewModels
                         case "-":
                         if (Regex.IsMatch(calculationMembers[i + 1], @"\," ))
                             {
-                                result -= float.Parse(calculationMembers[i + 1]);
+                                result -= double.Parse(calculationMembers[i + 1]);
                             } else {
                                 result -= int.Parse(calculationMembers[i + 1]);
                             }
@@ -72,7 +72,7 @@ namespace CsharpCalculator.ViewModels
                         case "*":
                             if (Regex.IsMatch(calculationMembers[i + 1], @"\," ))
                             {
-                                result *= float.Parse(calculationMembers[i + 1]);
+                                result *= double.Parse(calculationMembers[i + 1]);
                             } else {
                                 result *= int.Parse(calculationMembers[i + 1]);
                             }
@@ -81,7 +81,7 @@ namespace CsharpCalculator.ViewModels
                         case "/":
                             if (Regex.IsMatch(calculationMembers[i + 1], @"\," ))
                             {
-                                result /= float.Parse(calculationMembers[i + 1]);
+                                result /= double.Parse(calculationMembers[i + 1]);
                             } else {
                                 result /= int.Parse(calculationMembers[i + 1]);
                             }
@@ -91,7 +91,7 @@ namespace CsharpCalculator.ViewModels
 
             }
 
-            CurrentInput = result.ToString();
+            CurrentInput = Math.Round(result,3).ToString();
         }
 
 
