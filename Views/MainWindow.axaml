@@ -27,8 +27,9 @@
     <StackPanel>
         <TextBlock
             Classes="display"
-            Text="{Binding CurrentInput}"
+            Text="{Binding CurrentInput, Mode=TwoWay}"
             TextAlignment="Right"
+            Name="display"
         ></TextBlock>
 
         <Grid
@@ -70,24 +71,33 @@
                 Height="50" 
                 Width="50"
                 Grid.Row="0" Grid.Column="1" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="7"
             >7</Button>
 
             <Button
                 Height="50" 
                 Width="50"
                 Grid.Row="0" Grid.Column="2" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="8"
             >8</Button>
 
             <Button
                 Height="50" 
                 Width="50"
                 Grid.Row="0" Grid.Column="3" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="9"
+
             >9</Button>
 
             <Button
                 Height="50" 
                 Width="50"
                 Grid.Row="0" Grid.Column="4" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="/"
             >/</Button>
 
 
@@ -103,24 +113,32 @@
                 Height="50"
                 Width="50" 
                 Grid.Row="1" Grid.Column="1" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="6"
             >6</Button>
 
             <Button
                 Height="50"
                 Width="50" 
                 Grid.Row="1" Grid.Column="2" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="5"
             >5</Button>
 
             <Button
                 Height="50"
                 Width="50" 
                 Grid.Row="1" Grid.Column="3" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="4"
             >4</Button>
 
             <Button
                 Height="50"
                 Width="50" 
                 Grid.Row="1" Grid.Column="4" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="*"
             >*</Button>
 
             <!-- SEPERATION -->
@@ -135,24 +153,32 @@
                 Height="50"
                 Width="50" 
                 Grid.Row="2" Grid.Column="1" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="3"
             >3</Button>
 
             <Button
                 Height="50"
                 Width="50" 
                 Grid.Row="2" Grid.Column="2" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="2"
             >2</Button>
 
             <Button
                 Height="50"
                 Width="50" 
                 Grid.Row="2" Grid.Column="3" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="1"
             >1</Button>
 
             <Button
                 Height="50"
                 Width="50" 
                 Grid.Row="2" Grid.Column="4" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="-"
             >-</Button>
 
             <!-- SEPERATION -->
@@ -160,13 +186,15 @@
             <Button
                 Height="50"
                 Width="50" 
-            Grid.Row="3" Grid.Column="0" 
+                Grid.Row="3" Grid.Column="0" 
             >M+</Button>
             
              <Button
                 Height="50"
                 Width="50" 
                 Grid.Row="3" Grid.Column="1" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="0"
             >0</Button>
 
             <Button
@@ -179,18 +207,23 @@
                 Height="50"
                 Width="50" 
                 Grid.Row="3" Grid.Column="3" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="."
             >.</Button>
 
             <Button
                 Height="50"
                 Width="50" 
                 Grid.Row="3" Grid.Column="4" 
+                Command="{Binding AddCharacterToDisplay}"
+                CommandParameter="+"
             >+</Button>
 
             <Button
                 Height="50"
                 Width="50" 
                 Grid.Row="3" Grid.Column="5" 
+                Command="{Binding ExecuteCalculation}"
             >=</Button>
 
         </Grid>
