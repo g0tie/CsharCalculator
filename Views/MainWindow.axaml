@@ -208,7 +208,7 @@
                 Width="50" 
                 Grid.Row="3" Grid.Column="3" 
                 Command="{Binding AddCharacterToDisplay}"
-                CommandParameter="."
+                CommandParameter=","
             >.</Button>
 
             <Button

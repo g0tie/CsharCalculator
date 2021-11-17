@@ -44,31 +44,51 @@ namespace CsharpCalculator.ViewModels
             MatchCollection operationsMatches = Regex.Matches(CurrentInput, @"[-+*\/()]");
             var operationTypes = operationsMatches.Cast<Match>().Select(match => match.Value).ToList();
 
-            int result = int.Parse(calculationMembers[0]);
+            float result = float.Parse(calculationMembers[0]);
 
-                
             for (int i = 0; i < calculationMembers.Length; i++) {
-                
+
                 if (i < operationTypes.Count) {
 
                     switch (operationTypes[i]) {
                         case "+":
-                            result += int.Parse(calculationMembers[i + 1]);
+                            if (Regex.IsMatch(calculationMembers[i + 1], @"\." ))
+                            {
+                                result += float.Parse(calculationMembers[i + 1]);
+                            } else {
+                                result += int.Parse(calculationMembers[i + 1]);
+                            }
                         break;
 
                         case "-":
-                            result -= int.Parse(calculationMembers[i + 1]);
+                        if (Regex.IsMatch(calculationMembers[i + 1], @"\." ))
+                            {
+                                result -= float.Parse(calculationMembers[i + 1]);
+                            } else {
+                                result -= int.Parse(calculationMembers[i + 1]);
+                            }
                         break;
 
                         case "*":
-                            result *= int.Parse(calculationMembers[i + 1]);
+                            if (Regex.IsMatch(calculationMembers[i + 1], @"\." ))
+                            {
+                                result *= float.Parse(calculationMembers[i + 1]);
+                            } else {
+                                result *= int.Parse(calculationMembers[i + 1]);
+                            }
                         break;
 
                         case "/":
-                            result /= int.Parse(calculationMembers[i + 1]);
+                            if (Regex.IsMatch(calculationMembers[i + 1], @"\." ))
+                            {
+                                result /= float.Parse(calculationMembers[i + 1]);
+                            } else {
+                                result /= int.Parse(calculationMembers[i + 1]);
+                            }
                         break;
                     }
                 }
+
             }
 
             CurrentInput = result.ToString();
@@ -84,5 +104,6 @@ namespace CsharpCalculator.ViewModels
         {
             CurrentInput = CurrentInput.Remove(CurrentInput.Length - 1);
         }
+
     }
 }
