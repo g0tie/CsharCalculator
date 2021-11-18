@@ -34,6 +34,27 @@ namespace CsharpCalculator.ViewModels
             bool isLastCharNumber = int.TryParse(lastCharacter.ToString(), out nb);
             bool isCharToAddNumber = int.TryParse(character.ToString(), out nb);
 
+            if (lastCharacter == ')') {
+
+                if (character == ",") {
+                    string tempInput = CurrentInput.Remove(CurrentInput.Length - 1);
+                    tempInput = CurrentInput.Insert(CurrentInput.Length - 1, ",");
+                    
+                    CurrentInput = tempInput;
+                    return;
+                }
+
+                if (!Regex.IsMatch(character, @"[\-\+\*\/]")) {
+
+                    string tempInput = CurrentInput.Remove(CurrentInput.Length - 1);
+                    tempInput = CurrentInput.Insert(CurrentInput.Length - 1, $"{character}");
+                    
+                    CurrentInput = tempInput;
+
+                    return;
+                }
+            }
+
             // interdire d'ajouter un signe après un autre 
             if (lastCharacter != ')' && !isLastCharNumber && !isCharToAddNumber) return;
 
@@ -41,10 +62,10 @@ namespace CsharpCalculator.ViewModels
         }
 
         public void ExecuteCalculation()
-        {		
-            string[] calculationMembers = Regex.Split(CurrentInput,  @"[\+\*\/]|(?<!\()\-"); //Filtrer uniquement les nombres
+        {	
+            if (CurrentInput == "") return;
 
-            Console.WriteLine(calculationMembers[0]);
+            string[] calculationMembers = Regex.Split(CurrentInput,  @"[\+\*\/]|(?<!\()\-"); //Filtrer uniquement les nombres
 
             for (int i = 0; i < calculationMembers.Length; i++) {
 
@@ -52,7 +73,6 @@ namespace CsharpCalculator.ViewModels
                     calculationMembers[i] = parenthesisRemove(calculationMembers[i]);
                 }
             }
-            Console.WriteLine(calculationMembers[0]);
 
             MatchCollection operationsMatches = Regex.Matches(CurrentInput, @"[\+\*\/]|(?<!\()\-"); //Filtrer uniquement les signes
             var operationTypes = operationsMatches.Cast<Match>().Select(match => match.Value).ToList(); //Convertir les signes en string
@@ -124,6 +144,8 @@ namespace CsharpCalculator.ViewModels
 
         public void InvertSign()
         {
+            if (CurrentInput == "") return;
+
             string[] calculationMembers = Regex.Split(CurrentInput, @"[\+\*\/]|(?<!\()\-"); //Get string as array without sign operators
 
             // Get last member
@@ -133,8 +155,9 @@ namespace CsharpCalculator.ViewModels
             // check if last member in correct format
             if (Regex.IsMatch(CurrentInput[CurrentInput.Length - 1].ToString(), @"[\+\*\/]|(?<!\()\-")) return;
             if (Regex.IsMatch(lastCalcMember, @"[\-]")) lastCalcMember = parenthesisRemove(lastCalcMember);
+            
 
-            int invertedLastMember = int.Parse(lastCalcMember) * (-1);
+            double invertedLastMember = double.Parse(lastCalcMember) * (-1);
             string invertedLastMemberFormatted = "";
 
 
