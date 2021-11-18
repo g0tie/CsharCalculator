@@ -30,6 +30,7 @@
             Text="{Binding CurrentInput, Mode=TwoWay}"
             TextAlignment="Right"
             Name="display"
+            Height="24"
         ></TextBlock>
 
         <Grid
@@ -65,6 +66,7 @@
                 Height="50" 
                 Width="50"
                 Grid.Row="0" Grid.Column="0" 
+                IsEnabled="false"
             >MC</Button>
 
             <Button
@@ -107,6 +109,7 @@
                 Height="50"
                 Width="50" 
                 Grid.Row="1" Grid.Column="0" 
+                IsEnabled="false"
             >MR</Button>
             
             <Button
@@ -147,6 +150,7 @@
                 Height="50"
                 Width="50" 
                 Grid.Row="2" Grid.Column="0" 
+                IsEnabled="false"
             >MS</Button>
               
             <Button
@@ -187,6 +191,7 @@
                 Height="50"
                 Width="50" 
                 Grid.Row="3" Grid.Column="0" 
+                IsEnabled="false"
             >M+</Button>
             
              <Button
@@ -201,6 +206,7 @@
                 Height="50"
                 Width="50" 
                 Grid.Row="3" Grid.Column="2" 
+                Command="{Binding InvertSign}"
             >+/-</Button>
 
             <Button
