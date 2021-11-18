@@ -34,9 +34,15 @@ namespace CsharpCalculator.ViewModels
             bool isLastCharNumber = int.TryParse(lastCharacter.ToString(), out nb);
             bool isCharToAddNumber = int.TryParse(character.ToString(), out nb);
 
+            string[] calculationMembers = Regex.Split(CurrentInput,  @"[\+\*\/]|(?<!\()\-"); //Get calcualtion as array without operators
+            var lastMember = calculationMembers[calculationMembers.Length - 1];
+
             if (lastCharacter == ')') {
 
                 if (character == ",") {
+                    
+                    if ( Regex.IsMatch(lastMember, @"[\,]") ) return;
+                    
                     string tempInput = CurrentInput.Remove(CurrentInput.Length - 1);
                     tempInput = CurrentInput.Insert(CurrentInput.Length - 1, ",");
                     
