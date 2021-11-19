@@ -37,6 +37,12 @@ namespace CsharpCalculator.ViewModels
             string[] calculationMembers = Regex.Split(CurrentInput,  @"[\+\*\/]|(?<!\()\-"); //Get calcualtion as array without operators
             var lastMember = calculationMembers[calculationMembers.Length - 1];
 
+            // forbid to add commas if already one in last member
+            if (character == ",") {
+                if ( Regex.IsMatch(lastMember, @"[\,]") ) return;
+            }
+
+            // allow adding commas inside parenthesis
             if (lastCharacter == ')') {
 
                 if (character == ",") {
@@ -50,6 +56,7 @@ namespace CsharpCalculator.ViewModels
                     return;
                 }
 
+                //add cahracters to screen inside parenthesis if is a number, not a sign 
                 if (!Regex.IsMatch(character, @"[\-\+\*\/]")) {
 
                     string tempInput = CurrentInput.Remove(CurrentInput.Length - 1);
@@ -61,7 +68,7 @@ namespace CsharpCalculator.ViewModels
                 }
             }
 
-            // interdire d'ajouter un signe après un autre 
+            // fordbid adding an operator after another operator
             if (lastCharacter != ')' && !isLastCharNumber && !isCharToAddNumber) return;
 
             CurrentInput += character;
@@ -71,8 +78,10 @@ namespace CsharpCalculator.ViewModels
         {	
             if (CurrentInput == "") return;
 
-            string[] calculationMembers = Regex.Split(CurrentInput,  @"[\+\*\/]|(?<!\()\-"); //Filtrer uniquement les nombres
+            // get calc members without operators as array
+            string[] calculationMembers = Regex.Split(CurrentInput,  @"[\+\*\/]|(?<!\()\-"); 
 
+            // Remove parenthesis for future conversion
             for (int i = 0; i < calculationMembers.Length; i++) {
 
                 if (Regex.IsMatch(calculationMembers[i], @"()")) {
@@ -80,8 +89,10 @@ namespace CsharpCalculator.ViewModels
                 }
             }
 
-            MatchCollection operationsMatches = Regex.Matches(CurrentInput, @"[\+\*\/]|(?<!\()\-"); //Filtrer uniquement les signes
-            var operationTypes = operationsMatches.Cast<Match>().Select(match => match.Value).ToList(); //Convertir les signes en string
+            // get operators as collection
+            MatchCollection operationsMatches = Regex.Matches(CurrentInput, @"[\+\*\/]|(?<!\()\-"); 
+            // get collection as array of string
+            var operationTypes = operationsMatches.Cast<Match>().Select(match => match.Value).ToList(); 
 
             double result = double.Parse(calculationMembers[0]);
 
