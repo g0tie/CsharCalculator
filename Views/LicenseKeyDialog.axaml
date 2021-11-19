@@ -10,6 +10,7 @@
         MaxWidth="550"
         MaxHeight="200"
         CanResize="false"
+        x:Name="LicenseDialog"
         >
 
     <Design.DataContext>
@@ -26,6 +27,8 @@
             <TextBlock Margin="10,15">
                 Go on http://localhost:8000/to create an account
             </TextBlock>
+            <TextBlock Name="Error" Foreground="red">
+            </TextBlock>
 
            <Grid
                 RowDefinitions="Auto" 
@@ -33,7 +36,7 @@
                 Margin="5"    
             >
             <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding LicenseKey}" Watermark="Enter key here..."/>
-            <Button Grid.Column="1" Grid.Row="0" Command="{Binding VerifyKey}">Verify</Button>
+            <Button Grid.Column="1" Grid.Row="0" Command="{Binding VerifyKey}" CommandParameter="{Binding ElementName=LicenseDialog}">Verify</Button>
         </Grid>
 
         </StackPanel>
