@@ -6,6 +6,12 @@ Basic Calculator created usign .NET Core, AvaloniaUI on Ubuntu Linux.
 
 <h2>Utilisation</h2>
 
+Vous devez entrer une license pour utiliser la calculatrice (J'ai fait une api et une interface web pour ce faire: [Software License Manager](https://github.com/g0tie/SoftwareLicenceManager))
+Mais vous pouvez également entrer en mode développeur et bypasser la license en tappant le mot clé "devmode"
+
+![image](https://user-images.githubusercontent.com/56622131/142646341-c5ae5a13-3c90-4e59-989b-55416bcdc71b.png)
+
+
 <h3>Calcul</h3>
 Entrer un calcul puis appuyer sur la touche "=" pour effectuer le calcul
 
