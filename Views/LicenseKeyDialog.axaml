@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CsharpCalculator.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="CsharpCalculator.Views.LicenseKeyDialog"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Enter License Key"
+        MaxWidth="550"
+        MaxHeight="200"
+        CanResize="false"
+        >
+
+    <Design.DataContext>
+        <vm:LicenseKeyDialogViewModel/>
+    </Design.DataContext>
+
+        <StackPanel>
+            <TextBlock Margin="10, 15">
+                Please enter your LicenseKey
+            </TextBlock>
+            <TextBlock Margin="10,0">
+                If you don't have one, create an account, activate your copy and copy/paste here.
+            </TextBlock>
+            <TextBlock Margin="10,15">
+                Go on http://localhost:8000/to create an account
+            </TextBlock>
+
+           <Grid
+                RowDefinitions="Auto" 
+                ColumnDefinitions="1*,Auto"
+                Margin="5"    
+            >
+            <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding LicenseKey}" Watermark="Enter key here..."/>
+            <Button Grid.Column="1" Grid.Row="0" Command="{Binding VerifyKey}">Verify</Button>
+        </Grid>
+
+        </StackPanel>
+
+    </Window>

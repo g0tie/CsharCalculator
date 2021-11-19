@@ -27,7 +27,12 @@ namespace CsharpCalculator
             bool isActivated  = isProductActivated();
 
             if (!isActivated) {
-                // Winwow dialog = new MainWindow();
+                LicenseKeyDialog dialog = new LicenseKeyDialog()
+                {
+                    DataContext = new LicenseKeyDialogViewModel(),
+                };
+
+                dialog.Show();
 
                 return;
             }
@@ -64,6 +69,8 @@ namespace CsharpCalculator
                   return false;
                 }
 
+                if (line == "devmode") return true;
+
                 bool status = getOnlineKey(line);
                 sr.Close();
 
@@ -74,13 +81,9 @@ namespace CsharpCalculator
             catch(Exception e)
             {
                 System.Console.WriteLine("Exception: " + e.Message);
-            }
-            finally
-            {
-                System.Console.WriteLine("Executing finally block.");
+                return false;
             }
 
-            return false;
         }
 
         private bool getOnlineKey(string licensekey)
